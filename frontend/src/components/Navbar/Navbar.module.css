@@ -1,0 +1,32 @@
+/* src/components/Navbar/Navbar.module.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #4a90e2; /* Change to your preferred color */
+    color: white;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.navLinks {
+    list-style-type: none;
+    display: flex;
+    gap: 1.5rem; /* Space between links */
+}
+
+.navLinks li {
+    transition: color 0.3s ease;
+}
+
+.navLinks li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navLinks li a:hover {
+    color: #ffcc00; /* Change hover color */
+}
