@@ -19,11 +19,6 @@
 
 .features {
     padding: 2rem;
-}
-
-/* src/pages/Home/Home.module.css */
-.features {
-    padding: 2rem;
     background-color: #f9f9f9; /* Light background color */
     margin-top: 1rem; /* Space between sections */
 }
@@ -34,6 +29,20 @@
 }
 
 .featureList {
+    list-style: none;
     display: flex;
     flex-direction: column; /* Stack features vertically */
+}
+
+/* Zig-zag styles */
+.left {
+    justify-content: flex-start; /* Align left */
+}
+
+.right {
+    justify-content: flex-end; /* Align right */
+}
+
+.feedbackSection {
+    padding: 2rem;
 }

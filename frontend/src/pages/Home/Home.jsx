@@ -2,11 +2,15 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import Hero from '../../components/Hero/Hero';
-import Feature from '../../components/Features/Feature';
+import Feature from '../../components/Features/Feature'; // Import the Feature component
+import FeedbackForm from '../../components/FeedbackForm/FeedbackForm';
+import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.css';
 
+// Import icons from react-icons
 import { FaCalendarAlt, FaFileAlt, FaChalkboardTeacher, FaStickyNote, FaCalendarCheck, FaUsers, FaChartLine } from 'react-icons/fa';
 
+// Import features data from JSON file
 import featuresData from '../../data/features.json';
 
 const iconMapping = {
@@ -25,18 +29,26 @@ const Home = () => {
             <Navbar />
             <Hero />
             <section className={styles.features}>
-                <h2>Key Features</h2>
+                <h2 id='features'>Key Features</h2>
                 <ul className={styles.featureList}>
-                    {featuresData.map((feature) => (
-                        <Feature 
-                            key={feature.title}
-                            icon={iconMapping[feature.title]} 
-                            title={feature.title} 
-                            description={feature.description} 
-                        />
+                    {featuresData.map((feature, index) => (
+                        <li 
+                            key={feature.title} 
+                            className={`${styles.featureItem} ${index % 2 === 0 ? styles.left : styles.right}`}
+                        >
+                            <Feature 
+                                icon={iconMapping[feature.title]} 
+                                title={feature.title} 
+                                description={feature.description} 
+                            />
+                        </li>
                     ))}
                 </ul>
             </section>
+            <section className={styles.feedbackSection}>
+                <FeedbackForm />
+            </section>
+            <Footer/>
         </div>
     );
 };
