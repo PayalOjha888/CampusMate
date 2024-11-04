@@ -21,15 +21,19 @@
     padding: 2rem;
 }
 
+/* src/pages/Home/Home.module.css */
+.features {
+    padding: 2rem;
+    background-color: #f9f9f9; /* Light background color */
+    margin-top: 1rem; /* Space between sections */
+}
+
 .features h2 {
     text-align: center;
+    margin-bottom: 1.5rem; /* Space below heading */
 }
 
-.features ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.features li {
-    margin: 0.5rem 0; /* Space between features */
+.featureList {
+    display: flex;
+    flex-direction: column; /* Stack features vertically */
 }
