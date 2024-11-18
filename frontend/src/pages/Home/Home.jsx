@@ -7,10 +7,8 @@ import FeedbackForm from '../../components/FeedbackForm/FeedbackForm';
 import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.css';
 
-// Import icons from react-icons
 import { FaCalendarAlt, FaFileAlt, FaChalkboardTeacher, FaStickyNote, FaCalendarCheck, FaUsers, FaChartLine } from 'react-icons/fa';
 
-// Import features data from JSON file
 import featuresData from '../../data/features.json';
 
 const iconMapping = {

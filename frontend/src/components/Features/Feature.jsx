@@ -1,4 +1,3 @@
-// src/components/Feature/Feature.jsx
 import React from 'react';
 import styles from './Feature.module.css';
 

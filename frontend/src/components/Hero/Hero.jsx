@@ -1,6 +1,8 @@
-// src/components/Hero/Hero.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Hero.module.css';
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 const Hero = () => {
     const [username, setUsername] = useState('');
@@ -8,6 +10,8 @@ const Hero = () => {
     const [captcha, setCaptcha] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [generatedCaptcha, setGeneratedCaptcha] = useState(generateCaptcha());
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     function generateCaptcha() {
         const num1 = Math.floor(Math.random() * 10);
@@ -17,13 +21,35 @@ const Hero = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Add your login logic here
-        if (parseInt(captcha) === generatedCaptcha.result) {
-            console.log('Login successful');
-            // Handle successful login
-        } else {
+        // Check captcha first
+        if (parseInt(captcha) !== generatedCaptcha.result) {
             alert('Incorrect captcha!');
+            return;
         }
+
+        // Prepare login data
+        const loginData = {
+            rollNumber: username, // Assuming rollNumber is the username
+            password: password,
+        };
+
+        // Make API call to the backend
+        axios.post('http://localhost:5000/students/login', loginData)
+            .then(response => {
+                console.log('Login successful', response.data);
+                login();  // Update authentication state
+                localStorage.setItem('rollNumber', response.data.student.rollNumber); // Store roll number
+                navigate('/dashboard');  // Navigate to the dashboard
+            })
+            .catch(error => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    alert(error.response.data.error);
+                } else {
+                    // Something happened in setting up the request
+                    alert('Login failed. Please try again.');
+                }
+            });
     };
 
     return (
