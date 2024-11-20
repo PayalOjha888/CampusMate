@@ -89,7 +89,6 @@ A comprehensive campus management web application designed for students to strea
     mysql -u [username] -p campus_mate < database_dump.sql
 ---
 ## **Folder Structure**
-    ```bash
     │   Campus Mate/
     ├── frontend/                 # Vite-based frontend
     │   ├── public/               # Static assets
@@ -110,7 +109,6 @@ A comprehensive campus management web application designed for students to strea
     │   └── database_dump.sql     # SQL dump file for initial database setup
     ├── README.md                 # Project documentation
     └── .gitignore                # Files and directories to ignore in Git
-    ```
 ---
 ## License
 This project is licensed under `MIT License`
