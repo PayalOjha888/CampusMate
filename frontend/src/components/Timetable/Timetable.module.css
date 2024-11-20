@@ -1,54 +1,51 @@
 .timetable {
-    margin-top: 20px;
-    overflow-x: auto; /* Allow horizontal scrolling for smaller screens */
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: auto;
 }
 
 .timetable table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Even column widths */
-    font-family: Arial, sans-serif;
+    table-layout: auto;
 }
 
 .timetable th, .timetable td {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
-    word-wrap: break-word; /* Ensure text stays within cells */
-    vertical-align: middle; /* Align text in the middle */
+    vertical-align: middle;
 }
 
 .timetable th {
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
     font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 14px;
 }
 
 .timetable td {
-    background-color: #e7f4fa;
+    font-size: 13px;
+    color: #444;
+    background-color: #fff;
 }
 
-.timetable .day-heading {
-    background-color: #d0e6f3;
+.timetable .day-column {
+    background-color: #e6f7ff;
     font-weight: bold;
-    text-align: center;
-    font-size: 1.1em;
+    color: #005580;
+    width: 100px;
 }
 
-.timetable .highlight {
-    background-color: #f9f9a4;
-    font-weight: bold;
-    color: #333;
+.timetable tr:nth-child(even) td {
+    background-color: #f9f9f9;
 }
 
-.timetable .merged-cell {
-    background-color: #c3e6cb; /* Light green */
-    font-style: italic;
-    text-align: center;
-}
-
-.timetable .lunch-break {
-    background-color: #ffecb3;
-    font-weight: bold;
-    text-align: center;
-    color: #5d4037;
+.timetable tr:hover td {
+    background-color: #eaf5ff;
 }
