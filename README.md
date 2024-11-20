@@ -89,28 +89,28 @@ A comprehensive campus management web application designed for students to strea
     mysql -u [username] -p campus_mate < database_dump.sql
 ---
 ## **Folder Structure**
-```bash
-│   Campus Mate/
-├── frontend/               # Vite-based frontend
-│   ├── public/            # Static assets
-│   ├── src/               # Source files
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/         # Page components (e.g., Dashboard, Profile)
-│   │   ├── App.jsx        # Main app component
-│   │   └── main.jsx       # Entry point for Vite
-│   └── package.json       # Frontend dependencies
-├── backend/                # Node.js backend
-│   ├── controllers/       # Contains business logic
-│   ├── models/            # Database schema models
-│   ├── routes/            # API route handlers
-│   ├── app.js             # Backend app configuration
-│   ├── server.js          # Backend server entry point
-│   └── package.json       # Backend dependencies
-├── database/               # Database-related files
-│   └── database_dump.sql   # SQL dump file for initial database setup
-├── README.md               # Project documentation
-└── .gitignore              # Files and directories to ignore in Git
-```
+    ```bash
+    │   Campus Mate/
+    ├── frontend/                 # Vite-based frontend
+    │   ├── public/               # Static assets
+    │   ├── src/                  # Source files
+    │   │   ├── components/       # Reusable components
+    │   │   ├── pages/            # Page components (e.g., Dashboard, Profile)
+    │   │   ├── App.jsx           # Main app component
+    │   │   └── main.jsx          # Entry point for Vite
+    │   └── package.json          # Frontend dependencies
+    ├── backend/                  # Node.js backend
+    │   ├── controllers/          # Contains business logic
+    │   ├── models/               # Database schema models
+    │   ├── routes/               # API route handlers
+    │   ├── app.js                # Backend app configuration
+    │   ├── server.js             # Backend server entry point
+    │   └── package.json          # Backend dependencies
+    ├── database/                 # Database-related files
+    │   └── database_dump.sql     # SQL dump file for initial database setup
+    ├── README.md                 # Project documentation
+    └── .gitignore                # Files and directories to ignore in Git
+    ```
 ---
 ## License
 This project is licensed under `MIT License`
