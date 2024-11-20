@@ -2,12 +2,6 @@
     display: flex;
 }
 
-.sidebar {
-    width: 25%;
-    padding: 20px;
-    background-color: #f5f5f5;
-}
-
 .mainContent {
     width: 75%;
     padding: 20px;
@@ -28,4 +22,15 @@
 
 .eventCard h3 {
     margin-top: 0;
+}
+
+.timetableOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.timetableOptions button {
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
 }

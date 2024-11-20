@@ -3,19 +3,17 @@ import axios from 'axios';
 import styles from './Dashboard.module.css';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Timetable from '../../components/Timetable/Timetable';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 const Dashboard = () => {
-    const [profile, setProfile] = useState({});
     const [events, setEvents] = useState([]);
+    const [selectedType, setSelectedType] = useState('today');
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
-    const rollNumber = localStorage.getItem('rollNumber'); // Retrieve roll number from local storage
+    const rollNumber = localStorage.getItem('rollNumber');
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/students/${rollNumber}/profile`)
-            .then(response => setProfile(response.data.profile))
-            .catch(error => console.error('Error fetching profile:', error));
-
         axios.get('http://localhost:5000/students/events')
             .then(response => setEvents(response.data))
             .catch(error => console.error('Error fetching events:', error));
@@ -26,27 +24,30 @@ const Dashboard = () => {
         navigate('/');
     };
 
+    const handleTimetableChange = (type) => {
+        setSelectedType(type);
+    };
+
     return (
         <div className={styles.dashboard}>
-            <div className={styles.sidebar}>
-                <h2>Profile</h2>
-                <p><strong>Name:</strong> {profile.name}</p>
-                <p><strong>Roll Number:</strong> {profile.rollNumber}</p>
-                <p><strong>Course:</strong> {profile.course}</p>
-                <p><strong>Specialization:</strong> {profile.specialization}</p>
-                <p><strong>Email:</strong> {profile.email}</p>
-                <p><strong>Semester:</strong> {profile.semester}</p>
-                <nav>
-                    <ul>
-                        <li><a href="#timetable">Timetable</a></li>
-                        <li><a href="#notes">Notes</a></li>
-                        <li><a href="#attendance">Attendance</a></li>
-                        <li><a href="#facultyProfiles">Faculty Profiles</a></li>
-                    </ul>
-                </nav>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
+            <Sidebar rollNumber={rollNumber} handleTimetableChange={handleTimetableChange} />
             <div className={styles.mainContent}>
+                {selectedType === 'timetable' ? (
+                    <>
+                        <h2>Select Timetable Type</h2>
+                        <div className={styles.timetableOptions}>
+                            <button onClick={() => handleTimetableChange('regular')}>Regular Classes</button>
+                            <button onClick={() => handleTimetableChange('unit_test')}>Unit Test Timetable</button>
+                            <button onClick={() => handleTimetableChange('mid_sem')}>Mid-Sem Timetable</button>
+                            <button onClick={() => handleTimetableChange('final_exam')}>Final Exam Timetable</button>
+                        </div>
+                    </>
+                ) : selectedType !== 'today' && (
+                    <>
+                        <h2>Timetable</h2>
+                        <Timetable rollNumber={rollNumber} selectedType={selectedType} />
+                    </>
+                )}
                 <h2>Upcoming Events</h2>
                 <div className={styles.events}>
                     {events.map(event => (
@@ -58,6 +59,7 @@ const Dashboard = () => {
                         </div>
                     ))}
                 </div>
+                <button onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

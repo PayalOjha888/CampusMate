@@ -1,0 +1,54 @@
+.timetable {
+    margin-top: 20px;
+    overflow-x: auto; /* Allow horizontal scrolling for smaller screens */
+}
+
+.timetable table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Even column widths */
+    font-family: Arial, sans-serif;
+}
+
+.timetable th, .timetable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word; /* Ensure text stays within cells */
+    vertical-align: middle; /* Align text in the middle */
+}
+
+.timetable th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.timetable td {
+    background-color: #e7f4fa;
+}
+
+.timetable .day-heading {
+    background-color: #d0e6f3;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.timetable .highlight {
+    background-color: #f9f9a4;
+    font-weight: bold;
+    color: #333;
+}
+
+.timetable .merged-cell {
+    background-color: #c3e6cb; /* Light green */
+    font-style: italic;
+    text-align: center;
+}
+
+.timetable .lunch-break {
+    background-color: #ffecb3;
+    font-weight: bold;
+    text-align: center;
+    color: #5d4037;
+}
