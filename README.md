@@ -90,7 +90,7 @@ A comprehensive campus management web application designed for students to strea
 ---
 ## **Folder Structure**
 ```bash
-|   Campus Mate/
+│   Campus Mate/
 ├── frontend/               # Vite-based frontend
 │   ├── public/            # Static assets
 │   ├── src/               # Source files
