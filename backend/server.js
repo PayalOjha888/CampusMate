@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const studentRoutes = require('./routes/student');
 const cors = require('cors');
 const helmet = require('helmet');
-const notesRoutes = require('./routes/notes');
 const timetableRoutes = require('./routes/timetable');
 require('dotenv').config();
 

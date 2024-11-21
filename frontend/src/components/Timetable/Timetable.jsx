@@ -16,6 +16,14 @@ const Timetable = ({ rollNumber, selectedType }) => {
         { start_time: '14:50', end_time: '15:40' },
     ];
 
+    const formatDate = (isoDate) => {
+        const date = new Date(isoDate);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear()).slice(-2);
+        return `${day}/${month}/${year}`;
+    };
+
     useEffect(() => {
         const fetchTimetable = (type) => {
             axios.get(`http://localhost:5000/timetables/${rollNumber}/${type}`)
@@ -78,7 +86,7 @@ const Timetable = ({ rollNumber, selectedType }) => {
                     <tbody>
                         {timetable.map((entry, index) => (
                             <tr key={index}>
-                                <td>{entry.date}</td>
+                                <td>{formatDate(entry.date)}</td>
                                 <td>{entry.start_time}</td>
                                 <td>{entry.end_time}</td>
                                 <td>{entry.subject}</td>

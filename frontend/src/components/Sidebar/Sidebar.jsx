@@ -33,18 +33,22 @@ const Sidebar = ({ rollNumber, handleTimetableChange }) => {
             <p><strong>Semester:</strong> {profile.semester}</p>
 
             <h2>Today's Classes</h2>
-            <ul>
-                {todayClasses.map((entry, index) => (
-                    <li key={index}>
-                        <p><strong>{entry.subject_name}</strong></p>
-                        <p>{entry.start_time} - {entry.end_time}</p>
-                    </li>
-                ))}
-            </ul>
+            {todayClasses.length > 0 ? (
+                <ul>
+                    {todayClasses.map((entry, index) => (
+                        <li key={index}>
+                            <p><strong>{entry.subject_name}</strong></p>
+                            <p>{entry.start_time} - {entry.end_time}</p>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No classes scheduled for today.</p>
+            )}
             <nav>
                 <ul>
                     <li><a href="#" onClick={() => handleTimetableChange('timetable')}>Timetable</a></li>
-                    <li><a href="#notes">Notes</a></li>
+                    <li><a href="/notes">Notes</a></li>
                     <li><a href="#attendance">Attendance</a></li>
                     <li><a href="#facultyProfiles">Faculty Profiles</a></li>
                 </ul>

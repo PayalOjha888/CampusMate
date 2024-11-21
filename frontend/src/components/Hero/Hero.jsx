@@ -21,32 +21,27 @@ const Hero = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Check captcha first
         if (parseInt(captcha) !== generatedCaptcha.result) {
             alert('Incorrect captcha!');
             return;
         }
 
-        // Prepare login data
         const loginData = {
-            rollNumber: username, // Assuming rollNumber is the username
+            rollNumber: username,
             password: password,
         };
 
-        // Make API call to the backend
         axios.post('http://localhost:5000/students/login', loginData)
             .then(response => {
                 console.log('Login successful', response.data);
-                login();  // Update authentication state
-                localStorage.setItem('rollNumber', response.data.student.rollNumber); // Store roll number
-                navigate('/dashboard');  // Navigate to the dashboard
+                login();
+                localStorage.setItem('rollNumber', response.data.student.rollNumber);
+                navigate('/dashboard');
             })
             .catch(error => {
                 if (error.response) {
-                    // The request was made and the server responded with a status code
                     alert(error.response.data.error);
                 } else {
-                    // Something happened in setting up the request
                     alert('Login failed. Please try again.');
                 }
             });
