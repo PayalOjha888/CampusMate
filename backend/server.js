@@ -4,6 +4,7 @@ const studentRoutes = require('./routes/student');
 const cors = require('cors');
 const helmet = require('helmet');
 const timetableRoutes = require('./routes/timetable');
+const notesRoutes = require('./routes/notes')
 require('dotenv').config();
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 app.use('/students', studentRoutes);
 app.use('/timetables', timetableRoutes);
+app.use('/notes', notesRoutes);
 
 app.get('/', (req, res) => {
     res.send("Campus mate backend with mysql is running");
